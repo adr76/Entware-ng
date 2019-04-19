@@ -1,0 +1,21 @@
+#!/bin/sh
+
+ENABLED=yes
+PROCS=sslh
+#ARGS="-p 0.0.0.0:443 --ssh localhost:22 --ssl localhost:443 --openvpn localhost:1194 --tinc localhost:655 --xmpp localhost:5222 -t 2 -v 0"
+ARGS="-F/opt/etc/sslh.cfg"
+PREARGS=""
+DESC=$PROCS
+PATH=/opt/sbin:/opt/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
+
+## Check Config Simlink when service start
+#  Created by rc.local
+# sslh_cfg="/etc/sslh.cfg"
+
+# if ! [ -f $sslh_cfg ] && [ "$1" = "start" ]; then
+  # echo "Create Simlink $sslh_cfg  -> /opt/etc/sslh.conf"
+  # ln -s /opt/etc/sslh.conf $sslh_cfg
+  # ls -la /etc/*sslh*
+# fi
+
+. /opt/etc/init.d/rc.func
