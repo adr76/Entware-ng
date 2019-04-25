@@ -5,17 +5,26 @@
 # See /LICENSE for more information.
 # http://rutschle.net/tech/sslh/sslh-v1.20.tar.gz
 
+# LOCAL_SRC $(TOPDIR)/build_dir/target-mipsel_mips32r2_uClibc-1.0.17/sslh-v1.2/
+# BIN       $(TOPDIR)/bin/targets/mipselsf/generic-uClibc/packages/
+# make package/sslh/clean # clear /bin /build_dir.
+
+# Compile ToDo
+# cd ~/entware/Entware-ng/
+# make package/sslh/compile -j1 V=s
+
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=sslh
-PKG_VERSION:=v1.2
-PKG_RELEASE:=1
+PKG_VERSION:=v1.20
+PKG_RELEASE:=2
 
-# PKG_SOURCE:=$(PKG_NAME)-$(PKG_VERSION).tar.gz
-# PKG_SOURCE_URL:=http://rutschle.net/tech/sslh/
-# PKG_HASH:=a7f49b0a1cfcb7bb9d97f5ffa932bff11c5f65d9a9bd8fe1812481dee5855116
-# PKG_LICENSE:=GPL-2.0+
-# PKG_LICENSE_FILES:=COPYING
+
+PKG_SOURCE:=$(PKG_NAME)-$(PKG_VERSION).tar.gz
+PKG_SOURCE_URL:=http://rutschle.net/tech/sslh/
+PKG_HASH:=a7f49b0a1cfcb7bb9d97f5ffa932bff11c5f65d9a9bd8fe1812481dee5855116
+PKG_LICENSE:=GPL-2.0+
+PKG_LICENSE_FILES:=COPYING
 
 include $(INCLUDE_DIR)/package.mk
 
@@ -42,8 +51,8 @@ define Package/sslh/install
 	$(INSTALL_BIN) $(PKG_BUILD_DIR)/sslh-fork $(1)/opt/sbin/sslh
 	$(INSTALL_DIR) $(1)/opt/etc/init.d
 	$(INSTALL_BIN) files/S14$(PKG_NAME) $(1)/opt/etc/init.d
-#$(INSTALL_DIR) $(1)/opt/etc/config
-#$(INSTALL_CONF) files/$(PKG_NAME).config $(1)/opt/etc/config/$(PKG_NAME)
+  #$(INSTALL_DIR) $(1)/opt/etc/config
+  #$(INSTALL_CONF) files/$(PKG_NAME).config $(1)/opt/etc/config/$(PKG_NAME)
 	$(INSTALL_CONF) files/sslh.cfg $(1)/opt/etc/sslh.cfg
 endef
 
