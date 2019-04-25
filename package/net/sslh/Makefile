@@ -9,6 +9,11 @@
 # BIN       $(TOPDIR)/bin/targets/mipselsf/generic-uClibc/packages/
 # make package/sslh/clean # clear /bin /build_dir.
 
+# Make patch
+# cd ~/entware/sslh
+# edit Makefile
+# git diff > ~/entware/Entware-ng/sslh/patches/001-no_sslh_select.patch
+
 # Compile ToDo
 # cd ~/entware/Entware-ng/
 # make package/sslh/compile -j1 V=s
